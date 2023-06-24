@@ -78,12 +78,13 @@ $ sudo cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/conf
 $ sudo nano /usr/share/phpmyadmin/config.inc.php
 ```
 
-Locate `$cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */`
-And add `$cfg['blowfish_secret'] = '<random password> or <pwgen password>'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */`
+- Locate `$cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */`
+- Add `$cfg['blowfish_secret'] = '<random password> or <pwgen password>'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */`
 
-Locate : `$cfg['Servers'][$i]['controluser'] = 'pma';` and `$cfg['Servers'][$i]['controlpass'] = 'password';`
-Uncomment `$cfg['Servers'][$i]['controluser']` and replace 'pma' with a user of your choice (not related to the debian user).
-Uncomment `$cfg['Servers'][$i]['controlpass']` and replace 'password' with a strong password of your choice.
+- Locate `$cfg['Servers'][$i]['controluser'] = 'pma';` and `$cfg['Servers'][$i]['controlpass'] = 'password';`
+- Uncomment `$cfg['Servers'][$i]['controluser']` and replace 'pma' with a user of your choice (not related to the debian user).
+- Uncomment `$cfg['Servers'][$i]['controlpass']` and replace 'password' with a strong password of your choice.
+
 Once done, you just set a user for mysql with administrative task.
 
 Go to the bottom of the file and add `$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';`, this will be used a template cache by PhpMyAdmin.
