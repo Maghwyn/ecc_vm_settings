@@ -36,4 +36,5 @@ ________
 ```bash
 $ sudo apt update
 $ sudo apt-get -y install wget
+$ sudo apt-get -y install curl
 ````
