@@ -15,7 +15,7 @@
 - Admin user name : admin
 - Admin user pwd : admin
 
-Note : You can change the passwords of users with `passwd <user>`, a prompt will ask for a password confirm then a new password
+Note : You can change the passwords of users with `passwd <user>`, a prompt will ask for a password confirm then a new password.
 ________
 
 ## Sudo Privilege
@@ -23,6 +23,7 @@ ________
 Login as root user.
 
 ```bash
+$ apt update
 $ apt-get -y install sudo
 $ usermod -aG <user>
 ```
@@ -33,5 +34,6 @@ ________
 ## Required Packages
 
 ```bash
-$ apt-get -y install wget
+$ sudo apt update
+$ sudo apt-get -y install wget
 ````
