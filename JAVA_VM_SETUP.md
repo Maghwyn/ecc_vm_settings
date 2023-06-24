@@ -43,3 +43,70 @@ $ sudo chmod +x /etc/profile.d/gradle.sh
 $ source /etc/profile.d/gradle.sh
 $ gradle -v
 ```
+
+# Run a project with gradle
+
+Go to the root of the project folder and run the following :
+
+```bash
+$ gradle build
+$ gradle run
+```
+
+# Install PM2 (nodejs process manager) - Optional
+
+You'll need to install nodejs.
+
+```bash
+$ sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+$ source ~/.bashrc
+$ nvm install v18.16.1
+$ npm install -g pm2
+```
+
+Note: You can check the available node version with `nvm list-remote`.
+
+# Run a Java project with PM2
+
+Go to the root of your java project.
+
+```bash
+$ nano ecosystem.config.yml
+```
+
+Write the following to the file : 
+```yml
+apps:
+  - name: my-java-app
+    script: java
+    args: ['-jar', '/path/to/your/app-1.0-SNAPSHOT-all.jar']
+    interpreter: ''
+    exec_mode: fork
+    max_memory_restart: '1G'
+    autorestart: true
+    watch: false
+    log_date_format: 'YYYY-MM-DD HH:mm:ss.SSS'
+```
+
+```bash
+$ nano my-java-app.sh
+```
+
+Write the following to the file :
+```bash
+#!/bin/bash
+java -jar path/to/your/app-1.0-SNAPSHOT-all.jar server config.yml
+```
+
+Then lastly, run the following :
+
+```bash
+$ chmod +x my-java-app.sh
+$ pm2 start my-java-app.sh --name=my-java-app
+```
+
+Note: Necessary pm2 commands below
+- `pm2 log`
+- `pm2 log <pid>`
+- `pm2 stop <name>`
+- `pm2 list`
