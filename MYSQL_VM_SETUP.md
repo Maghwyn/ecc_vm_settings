@@ -56,7 +56,7 @@ Use `ip a` to retrieve it.
 $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
-Add `bind-address = <my sql vm ip>` after `log-error`, then restart mysql.
+Add `bind-address = <mysql vm ip>` after `log-error`, then restart mysql.
 
 ```bash
 $ sudo service mysql restart
