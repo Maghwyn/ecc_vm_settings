@@ -6,6 +6,7 @@ $ cd /tmp
 $ sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.25-1_all.deb
 $ sudo apt install ./mysql-apt-config_0.8.25-1_all.deb
 $ sudo apt update
+$ rm -rf mysql-apt-config_0.8.25-1_all.deb
 ```
 
 # Install MySql

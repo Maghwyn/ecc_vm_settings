@@ -199,4 +199,13 @@ Retrieve you ip with the command `ip a`, then go to `http://<ip>/phpmyadmin`.
 
 # Link PhpMyAdmin VM with SQL VM
 
-Ongoing...
+```bash
+$ sudo nano /usr/share/phpmyadmin/config.inc.php
+```
+
+- Locate `$cfg['Servers'][$i]['host']`
+- Add `$cfg['Servers'][$i]['host'] = <mysql mv ip>`
+
+Then you can reload apache with `sudo systemctl reload apache2`.
+
+You should now be able to login into PhpMyAdmin with a user from Mysql on the other VM.
