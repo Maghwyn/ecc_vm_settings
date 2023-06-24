@@ -95,7 +95,7 @@ $ nano my-java-app.sh
 Write the following to the file :
 ```bash
 #!/bin/bash
-java -jar path/to/your/app-1.0-SNAPSHOT-all.jar server config.yml
+java -jar path/to/your/app-1.0-SNAPSHOT-all.jar server ecosystem.config.yml
 ```
 
 Then lastly, run the following :
