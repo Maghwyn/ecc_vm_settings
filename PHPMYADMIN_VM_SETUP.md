@@ -195,7 +195,7 @@ A prompt will pop to ask for your password, then you can reload apache with `sud
 
 # Goto PhpMyAdmin
 
-Retrieve you ip with the command `ip a`, then go to `http://<ip>/phpmyadmin`.
+Retrieve your VM ip, then go to `http://<ip>/phpmyadmin`.
 
 # Link PhpMyAdmin VM with SQL VM
 

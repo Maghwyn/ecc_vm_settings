@@ -34,23 +34,38 @@ $ sudo mysql -u root -p
 ```
 
 Enter your password, then create the user of your choice with the following queries :
-Note : It's better to use the `ip` as PhpMyAdmin is on another VM, run `ip a` to retrieve it.
 
 ```sql
-> CREATE USER '<username>'@'<localhost or ip>' IDENTIFIED WITH caching_sha2_password BY '<password>';
-> GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO '<username>'@'<localhost/ip>' WITH GRANT OPTION;
+> CREATE USER '<username>'@'localhost' IDENTIFIED WITH caching_sha2_password BY '<password>';
+> GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO '<username>'@'localhost' WITH GRANT OPTION;
 > FLUSH PRIVILEGES;
 > exit
 ```
-
-Note: If you used localhost for the host and want to change it later, run the following : `UPDATE mysql.user SET Host='<new host>' WHERE User='<username>' AND Host='<old host>';`
 
 Now you can connect to your user with `sudo mysql -u <username> -p`.
 
 # Link SQL VM with PhpMyAdmin VM
 
-WARNING : The user host must be the ip of the SQL VM.
-Use `ip a` to retrieve it.
+We will create a new user with the same name and password, but the host will change.
+
+```bash
+$ sudo mysql
+$ sudo mysql -u root -p
+```
+
+```sql
+> CREATE USER '<username>'@'<phpmyadmin vm ip>' IDENTIFIED WITH caching_sha2_password BY '<password>';
+> GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO '<username>'@'<phpmyadmin vm ip>' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> exit
+```
+
+Note: If you wish to change the host for a user, run the following :
+```sql
+UPDATE mysql.user SET Host='<new host>' WHERE User='<username>' AND Host='<old host>';
+```
+
+We will now set the binding of mysql to your VM machine.
 
 ```bash
 $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -61,4 +76,13 @@ Add `bind-address = <mysql vm ip>` after `log-error`, then restart mysql.
 ```bash
 $ sudo service mysql restart
 $ sudo systemctl restart mysql.service
+```
+
+# Secure your mysql with a firewall
+
+```bash
+$ sudo apt-get -y install ufw
+$ sudo ufw allow from <phpmyadmin vm ip> to any port 3306
+$ sudo ufw enable
+$ sudo ufw status
 ```

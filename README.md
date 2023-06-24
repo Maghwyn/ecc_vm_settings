@@ -40,8 +40,14 @@ $ sudo apt-get -y install wget
 $ sudo apt-get -y install curl
 ```
 
+## Retrieve your VM ip
+
+```bash
+$ ip a | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+```
+
 ## Connect as SSH
 
-Retrieve the ip of the VM with `ip a`.
+Retrieve the ip of the VM.
 Open a terminal on your main machine.
 Connect to ssh with `ssh <username>@<ip>.`
