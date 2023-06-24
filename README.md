@@ -2,6 +2,7 @@
 - VirtualBox
 - Debian 10 x64
 - Bridged Network
+- SSH Server Only
 - Pc OS : Linux
 ---
 
@@ -37,4 +38,10 @@ ________
 $ sudo apt update
 $ sudo apt-get -y install wget
 $ sudo apt-get -y install curl
-````
+```
+
+## Connect as SSH
+
+Retrieve the ip of the VM with `ip a`.
+Open a terminal on your main machine.
+Connect to ssh with `ssh <username>@<ip>.`
