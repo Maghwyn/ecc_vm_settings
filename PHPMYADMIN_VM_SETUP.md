@@ -1,4 +1,4 @@
-## Install Apache
+# Install Apache
 
 ```bash
 $ sudo apt-get -y install apache2
@@ -6,7 +6,7 @@ $ sudo apt update
 $ sudo apt upgrade
 ```
 
-## Install PHP8 with sury
+# Install PHP8 with sury
 
 ```bash
 $ sudo apt install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
@@ -18,9 +18,9 @@ $ sudo apt-get -y install php8.2
 $ php -v
 ```
 
-## Install PhpMyAdmin with security setup
+# Install PhpMyAdmin with security setup
 
-### Prepare the terrain with apache
+## Prepare the terrain with apache
 
 ```bash
 $ sudo nano /etc/apache2/mods-enabled/dir.conf
@@ -45,14 +45,14 @@ $ sudo systemctl reload apache2
 $ sudo systemctl status apache2
 ```
 
-### Install the necessary libs for PhpMyAdmin
+## Install the necessary libs for PhpMyAdmin
 
 ```bash
 $ sudo apt update
 $ sudo apt-get -y install php8.2-mysql php8.2-mbstring php8.2-zip php8.2-gd
 ```
 
-### Install PhpMyAdmin
+## Install PhpMyAdmin
 
 ```bash
 $ cd /tmp
@@ -62,7 +62,7 @@ $ sudo mv phpMyAdmin-5.2.1-all-languages/ /usr/share/phpmyadmin
 $ rm -rf phpMyAdmin-5.2.1-all-languages.tar.gz
 ```
 
-### Setup PhpMyAdmin
+## Setup PhpMyAdmin
 
 (optional, generate a password with pwgen and copy the result)
 ```bash
@@ -87,9 +87,9 @@ $ sudo nano /usr/share/phpmyadmin/config.inc.php
 
 Once done, you just set a user for mysql with administrative task.
 
-Go to the bottom of the file and add `$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';`, this will be used a template cache by PhpMyAdmin.
+Go to the bottom of the file and add `$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';`, this will be used as template cache by PhpMyAdmin.
 
-### Configure Apache to serve PhpMyAdmin
+## Configure Apache to serve PhpMyAdmin
 
 ```bash
 $ nano /etc/apache2/conf-available/phpmyadmin.conf
@@ -166,7 +166,7 @@ $ sudo a2enconf phpmyadmin.conf
 $ sudo systemctl reload apache2
 ```
 
-### Protect PhpMyAdmin with Apache password
+## Protect PhpMyAdmin with Apache password
 
 ```bash
 $ sudo nano /etc/apache2/conf-available/phpmyadmin.conf
@@ -193,10 +193,10 @@ $ sudo htpasswd -c /usr/share/phpmyadmin/.htpasswd <user>
 ```
 A prompt will pop to ask for your password, then you can reload apache with `sudo systemctl reload apache2`.
 
-## Goto PhpMyAdmin
+# Goto PhpMyAdmin
 
 Retrieve you ip with the command `ip a`, then go to `http://<ip>/phpmyadmin`.
 
-## Link PhpMyAdmin VM with SQL VM
+# Link PhpMyAdmin VM with SQL VM
 
 Ongoing...
