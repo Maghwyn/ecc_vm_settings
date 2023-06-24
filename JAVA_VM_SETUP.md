@@ -21,3 +21,25 @@ $ java -v
 $ sdk install java x.y.z-zulu
 $ sdk use java x.y.z-zulu
 ```
+
+# Install Gradle
+
+```bash
+$ sudo wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip -P /tmp
+$ sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+$ rm -rf /tmp/gradle-*.zip*
+$ sudo nano /etc/profile.d/gradle.sh
+```
+
+Write the following into the file :
+```md
+export GRADLE_HOME=/opt/gradle/gradle-8.1.1
+export PATH=${GRADLE_HOME}/bin:${PATH}
+```
+
+Add the permisions and activate gradle
+```bash
+$ sudo chmod +x /etc/profile.d/gradle.sh
+$ source /etc/profile.d/gradle.sh
+$ gradle -v
+```
