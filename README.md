@@ -9,11 +9,11 @@
 
 ## Users account
 
-Root user name : root\ 
-Root user pwd : root
+- Root user name : root
+- Root user pwd : root
 
-Root admin name : admin\ 
-Root admin pwd : admin
+- Root admin name : admin
+- Root admin pwd : admin
 
 Note : You can change the passwords of users with `passwd <user>`, a prompt will ask for a password confirm then a new password
 ________
