@@ -12,8 +12,8 @@
 - Root user name : root
 - Root user pwd : root
 
-- Root admin name : admin
-- Root admin pwd : admin
+- Admin user name : admin
+- Admin user pwd : admin
 
 Note : You can change the passwords of users with `passwd <user>`, a prompt will ask for a password confirm then a new password
 ________
