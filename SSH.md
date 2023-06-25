@@ -42,4 +42,21 @@ Finally, allow the ssh throught the firewall.
 
 ```bash
 $ sudo ufw allow from <main machine ip> to any port 22
-``` 
+```
+
+Then we'll also update the SSH configuration
+
+```bash
+$ sudo nano /etc/ssh/sshd_config
+$ sudo nano /etc/ssh/ssh_config
+```
+
+For each files.
+
+! Uncomment if they're commented
+- PermitRootLogin no (add it if it doesn't exist in ssh_config)
+- PasswordAuthentification no
+- Protocol 2 (add it if it doesn't exist in sshd_config)
+
+Finally, reload the ssh service with `sudo service ssh restart`.
+All set.
