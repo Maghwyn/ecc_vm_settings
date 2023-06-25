@@ -71,31 +71,3 @@ $ sudo ufw allow http
 $ sudo ufw allow https
 $ sudo ufw allow <port>
 ```
-
-# Setup ssh Github for JAVA VM
-
-Go to your github account > Settings > SSH and GPG keys > New SSH key
-Now go to your JAVA VM
-
-```bash
-$ ssh-keygen
-```
-
-Set a passphrase and run `cat ~/.ssh/id_rsa.pub`.
-Keep your passphrase and ssh key somewhere so you don't lose them.
-
-Now on your github account, give a name to your ssh and paste the id_rsa.pub, then save.
-
-Go to your project repository and set the origin as SSH connection.
-Then we'll setup the ssh configuration.
-
-```bash
-$ git remote set-url origin git@github.com:<username>/<project_name>.git
-$ sudo nano /etc/ssh/ssh_config
-```
-
-! Uncomment if they're commented
-- PasswordAuthentification no
-- Protocol 2
-
-Finally, reload the ssh service with `sudo service ssh restart`.
