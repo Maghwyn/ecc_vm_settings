@@ -59,4 +59,10 @@ For each files.
 - Protocol 2 (add it if it doesn't exist in sshd_config)
 
 Finally, reload the ssh service with `sudo service ssh restart`.
-All set.
+
+## Fix firewall for JAVA and PhpMyAdmin
+
+```bash
+$ sudo ufw allow http
+$ sudo ufw allow https
+```
