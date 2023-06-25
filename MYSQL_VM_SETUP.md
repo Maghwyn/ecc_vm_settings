@@ -26,6 +26,16 @@ Lastly, for the rest you can press yes. It will remove the "dev/testing" setup o
 
 If you want to test the successful instalation of mysql, run `mysqladmin -u root -p version`.
 
+
+# Secure MySql with a firewall
+
+```bash
+$ sudo apt-get -y install ufw
+$ sudo ufw allow from <phpmyadmin vm ip> to any port 3306
+$ sudo ufw enable
+$ sudo ufw status
+```
+
 # Create a Mysql User
 
 ```bash
@@ -78,11 +88,23 @@ $ sudo service mysql restart
 $ sudo systemctl restart mysql.service
 ```
 
-# Secure your mysql with a firewall
+# Link SQL VM with Java VM
+
+We will create a new user with the same name and password, but the host will change.
 
 ```bash
-$ sudo apt-get -y install ufw
-$ sudo ufw allow from <phpmyadmin vm ip> to any port 3306
-$ sudo ufw enable
-$ sudo ufw status
+$ sudo mysql
+$ sudo mysql -u root -p
+```
+
+```sql
+> CREATE USER '<username>'@'<java vm ip>' IDENTIFIED WITH caching_sha2_password BY '<password>';
+> GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO '<username>'@'<java vm ip>' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> exit
+```
+
+```bash
+$ sudo service mysql restart
+$ sudo systemctl restart mysql.service
 ```

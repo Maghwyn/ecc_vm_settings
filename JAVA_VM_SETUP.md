@@ -53,6 +53,11 @@ $ gradle build
 $ gradle run
 ```
 
+# Link Java VM with SQL VM
+
+You will need a jdbc url.
+Template = "jdbc:mysql://<host>:<port>/<dbname>?<options>"
+
 # Install PM2 (nodejs process manager) - Optional
 
 You'll need to install nodejs.
