@@ -1,13 +1,13 @@
 
-## Connect to the VM with SSH and a password
+# Connect to the VM with SSH and a password
 
 Retrieve the ip of the VM.
 Open a terminal on your main machine.
 Connect to ssh with `ssh <username>@<ip>.`
 
-## Secure SSH connexion, connect to the VM with SSH and an SSH key
+# Secure SSH connexion, connect to the VM with SSH and an SSH key
 
-### Create the id_rsa.pub
+## Create the id_rsa.pub
 
 Open a terminal in your main machine.
 
@@ -18,7 +18,7 @@ $ ssh-keygen
 Set a passphrase and run `cat ~/.ssh/id_rsa.pub`.
 Keep your passphrase and ssh key somewhere so you don't lose them.
 
-### Setup SSH in your VM
+## Setup SSH in your VM
 
 Login as your user, not the root, then go to your user root folder by running the command `cd`.
 
