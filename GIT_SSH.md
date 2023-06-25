@@ -78,3 +78,54 @@ $ ssh-add ~/.ssh/id_rsa
 ```
 
 Enter your passphrase and done.
+
+You can kill an agent with the following commands :
+
+```bash
+$ ssh-agent -k
+$ # If it doesn't work
+$ pgrep ssh-agent
+$ kill <pid>
+```
+
+# Setup SSH Agent for convenience
+
+Create a new file called .ssh_pwd_persistance.sh
+
+```bash
+$ cd
+$ nano .ssh_pwd_persistance.sh
+```
+
+And write the following :
+
+```bash
+##!/bin/bash
+
+function cd() {
+  builtin cd "$@"
+  if [ "$(pwd)" = "/home/maghwyn/java-testing" ]; then
+    if ! pgrep ssh-agent > /dev/null; then
+      eval "$(ssh-agent -s)"
+    fi
+
+    if ! ssh-add -l > /dev/null; then
+      ssh-add ~/.ssh/id_rsa
+    fi
+  fi
+}
+```
+
+Open .bashrc with `nano ~/.bashrc`, and add the following : 
+
+```bash
+source ~/.ssh_pwd_persistance.sh
+```
+
+Open .bash_logout with `nano ~/.bash_logout`, and add the follwing :
+
+```bash
+if [ -n "$SSH_AUTH_SOCK" ] ; then
+  eval "/usr/bin/ssh-agent -k"
+fi
+```
