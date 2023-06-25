@@ -32,6 +32,7 @@ If you want to test the successful instalation of mysql, run `mysqladmin -u root
 ```bash
 $ sudo apt-get -y install ufw
 $ sudo ufw allow from <phpmyadmin vm ip> to any port 3306
+$ sudo ufw allow from <java vm ip> to any port 3306
 $ sudo ufw enable
 $ sudo ufw status
 ```
