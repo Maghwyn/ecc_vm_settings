@@ -126,6 +126,6 @@ Open .bash_logout with `nano ~/.bash_logout`, and add the follwing :
 
 ```bash
 if [ -n "$SSH_AUTH_SOCK" ] ; then
-  eval "/usr/bin/ssh-agent -k"
+  eval `/usr/bin/ssh-agent -k`
 fi
 ```
