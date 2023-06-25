@@ -60,9 +60,17 @@ For each files.
 
 Finally, reload the ssh service with `sudo service ssh restart`.
 
-## Fix firewall for JAVA and PhpMyAdmin
+## Fix firewall for PhpMyAdmin VM
 
 ```bash
 $ sudo ufw allow http
 $ sudo ufw allow https
+```
+
+## Fix firewall for JAVA VM
+
+```bash
+$ sudo ufw allow http
+$ sudo ufw allow https
+$ sudo ufw allow <port>
 ```
