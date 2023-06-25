@@ -17,7 +17,6 @@
 - Admin user pwd : admin
 
 Note : You can change the passwords of users with `passwd <user>`, a prompt will ask for a password confirm then a new password.
-________
 
 ## Sudo Privilege
 
@@ -30,7 +29,12 @@ $ usermod -aG <user>
 ```
 
 Then logout as root and login as admin.
-________
+
+## Retrieve your VM ip
+
+```bash
+$ ip a | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+```
 
 ## Required Packages
 
@@ -39,15 +43,3 @@ $ sudo apt update
 $ sudo apt-get -y install wget
 $ sudo apt-get -y install curl
 ```
-
-## Retrieve your VM ip
-
-```bash
-$ ip a | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
-```
-
-## Connect as SSH
-
-Retrieve the ip of the VM.
-Open a terminal on your main machine.
-Connect to ssh with `ssh <username>@<ip>.`
